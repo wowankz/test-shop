@@ -1,13 +1,25 @@
 <template>
-	<div :class="{'green-border': count > 0}" class="product-card">
+	<div :class="{ 'green-border': count > 0 }" class="product-card">
 		<img :src="'https://raw.githubusercontent.com/wowankz/static/master/shop/img/' + product.img" alt="" class="product-card__img" />
 		<h3 class="product-card__name">{{ product.name }}</h3>
 		<p class="product-card__desc">{{ product.desc }}</p>
 		<div class="product-card__price">Цена: {{ product.price }}р</div>
 		<div class="product-card__count">В корзине {{ count }} шт</div>
 		<div class="product-card__buttons">
-			<button @click="updateBasket(product, 'add')" class="product-card__button product-card__button_add" :class="{'disabled': count > 98}" >Добавить</button>
-			<button @click="updateBasket(product, 'del')" class="product-card__button product-card__button_del" :class="{'disabled': count == 0}" >Удалить</button>
+			<button
+				@click="updateBasket(product, 'add')"
+				class="product-card__button product-card__button_add"
+				:class="{ disabled: count > 98 }"
+			>
+				Добавить
+			</button>
+			<button
+				@click="updateBasket(product, 'del')"
+				class="product-card__button product-card__button_del"
+				:class="{ disabled: count == 0 }"
+			>
+				Удалить
+			</button>
 		</div>
 	</div>
 </template>
@@ -103,6 +115,17 @@
 			box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 			border-radius: 4px;
 			border: 1px solid #eee;
+			color: #444444;
+			transition: 0.3s;
+			&:hover {
+				box-shadow: none;
+				color: #ffffff;
+			}
+
+			&:active {
+				box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15);
+				color: #444444;
+			}
 			&_add {
 				background: linear-gradient(82.88deg, #ffbb32 0%, #ffc85a 99.84%);
 			}
@@ -113,11 +136,11 @@
 		}
 
 		&:hover {
-			transform: scale(1.05);
+			transform: scale(1.02);
 		}
 	}
 
-  .green-border{
-    border-color: green;
-  }
+	.green-border {
+		border-color: green;
+	}
 </style>
