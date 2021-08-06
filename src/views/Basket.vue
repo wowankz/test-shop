@@ -21,24 +21,32 @@
 
 				<div class="basket-product__price">{{ getSum(product) }}р</div>
 
-				<font-awesome-icon
-					icon="times-circle"
-					@click="updateBasket(product, 'del')"
-					class="basket-product__button "
-				></font-awesome-icon>
+				<font-awesome-icon icon="times-circle" @click="updateBasket(product, 'del')" class="basket-product__button"></font-awesome-icon>
 			</div>
 		</div>
-		<div class="basket-order" >
-			<button :class="{ 'disabled-order': count <= 0 }" class="basket-order__button">Заказать</button>
+		<div class="basket-order">
+			<button @click="openOrderModal()" :class="{ 'disabled-order': count <= 0 }" class="basket-order__button">
+				Заказать
+			</button>
 		</div>
+		<transition name="fade">
+			<OrderModal @close="closeOrderModal($event)" v-show="isOrder" :basket="basket" />
+		</transition>
 	</div>
 </template>
 
 <script>
-	import { mapGetters } from 'vuex';
+	import { mapGetters, mapMutations } from 'vuex';
+	import OrderModal from '@/components/OrderModal';
 	export default {
 		name: 'Basket',
+		components: { OrderModal },
 
+		data() {
+			return {
+				isOrder: false,
+			};
+		},
 		computed: {
 			...mapGetters({ basket: 'getBasket' }),
 			count() {
@@ -47,16 +55,26 @@
 		},
 
 		methods: {
+			...mapMutations(['setBasket']),
+
 			updateBasket(product, type) {
 				this.$store.dispatch('updateBasket', { type, product });
 			},
 
-      getSum(product){
-        console.log(product.price,parseFloat(product.price));
-       return (parseFloat(product.price) * product.count).toFixed(2)
-      },
+			getSum(product) {
+				return (parseFloat(product.price) * product.count).toFixed(2);
+			},
 
+			openOrderModal() {
+				this.isOrder = true;
+			},
 
+			closeOrderModal(done) {
+				if (done === 'done') {
+					this.setBasket([])
+				}
+				this.isOrder = false;
+			},
 		},
 	};
 </script>
@@ -80,8 +98,14 @@
 			cursor: pointer;
 			transition: 0.3s;
 
-			&:hover {
-				box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+				&:hover {
+				box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+				color: green;
+			}
+
+			&:active {
+				box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.15);
+				color: #444444;
 			}
 		}
 	}
@@ -99,6 +123,10 @@
 			justify-items: center;
 			grid-gap: 8px;
 			padding: 5px;
+
+      @media (max-width: 767.98px) {
+			display: none;
+		}
 		}
 	}
 	.basket-product {
@@ -112,12 +140,21 @@
 		background: #ffffff;
 		border: 1px solid #ebebeb;
 
+    @media (max-width: 575.98px) {
+			grid-template-columns:  1fr  ;
+      border-radius: 6px;
+		}
+
 		&__img {
 			width: 100%;
 			height: 80px;
 			object-fit: cover;
 			object-position: top;
 			border-radius: 4px;
+
+ @media (max-width: 575.98px) {
+			height: 80vw;
+		}
 		}
 
 		&__name {

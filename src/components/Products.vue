@@ -1,6 +1,6 @@
 <template>
 	<div class="products">
-        <div v-if="products.length <= 0" class="products-loading">Loading...</div>
+		<div v-if="products.length <= 0" class="products-loading">Loading...</div>
 		<template v-else v-for="(product, i) in products">
 			<ProductCard :key="i" :product="product" />
 		</template>
@@ -32,15 +32,27 @@
 		grid-gap: 15px;
 		padding-top: 20px;
 
-        &-loading{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
+		@media (max-width: 1199.98px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+        @media (max-width: 991.98px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+         @media (max-width: 575.98px) {
+			grid-template-columns:  1fr;
+		}
+
+		&-loading {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
 	}
 </style>

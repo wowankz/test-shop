@@ -9,14 +9,14 @@
 			<button
 				@click="updateBasket(product, 'add')"
 				class="product-card__button product-card__button_add"
-				:class="{ disabled: count > 98 }"
+				:class="{ 'disabled-grey': count > 98 }"
 			>
 				Добавить
 			</button>
 			<button
 				@click="updateBasket(product, 'del')"
 				class="product-card__button product-card__button_del"
-				:class="{ disabled: count == 0 }"
+				:class="{ 'disabled-grey': count == 0 }"
 			>
 				Удалить
 			</button>
@@ -112,14 +112,14 @@
 			cursor: pointer;
 			outline: none;
 			padding: 10px 15px;
-			box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+
 			border-radius: 4px;
 			border: 1px solid #eee;
 			color: #444444;
 			transition: 0.3s;
 			&:hover {
-				box-shadow: none;
-				color: #ffffff;
+				box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+				color: green;
 			}
 
 			&:active {
@@ -127,11 +127,11 @@
 				color: #444444;
 			}
 			&_add {
-				background: linear-gradient(82.88deg, #ffbb32 0%, #ffc85a 99.84%);
+				background: #ffffff;
 			}
 
 			&_del {
-				background: linear-gradient(82.88deg, #f35a55 0%, #f06d4c 99.84%);
+				background: #ffffff;
 			}
 		}
 
