@@ -29,8 +29,8 @@
 				Заказать
 			</button>
 		</div>
-		<transition name="fade">
-			<OrderModal @close="closeOrderModal($event)" v-show="isOrder" :basket="basket" />
+		<transition >
+			<OrderModal @close="closeOrderModal($event)" v-if="isOrder"  :basket="basket" />
 		</transition>
 	</div>
 </template>

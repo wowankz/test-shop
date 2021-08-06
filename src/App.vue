@@ -43,8 +43,8 @@
 		}
 
 		@media (max-width: 991.98px) {
-			padding-right: calc((100% - 768px) / 2);
-			padding-left: calc((100% - 768px) / 2);
+			padding-right: calc((100% - 748px) / 2);
+			padding-left: calc((100% - 748px) / 2);
 		}
 
 		@media (max-width: 767.98px) {

@@ -1,16 +1,21 @@
 <template>
 	<div class="order-modal">
+
 		<div class="order-modal__box">
 			<h2 class="heading-h2">Оформить заказ</h2>
+
 			<div class="order-modal__body">
 				<div class="order-modal__count">Количество товаров: {{ count }} шт</div>
 				<div class="order-modal__sum">Сумма заказа: {{ totalSum }} р</div>
 			</div>
+
 			<div class="order-modal__buttons">
 				<button class="order-modal__button" @click="$emit('close')">Отменить</button>
 				<button class="order-modal__button" @click="$emit('close', 'done')">Оформить</button>
 			</div>
+
 		</div>
+
 	</div>
 </template>
 
