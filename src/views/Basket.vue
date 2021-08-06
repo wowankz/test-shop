@@ -47,6 +47,7 @@
 				isOrder: false,
 			};
 		},
+
 		computed: {
 			...mapGetters({ basket: 'getBasket' }),
 			count() {
@@ -71,7 +72,7 @@
 
 			closeOrderModal(done) {
 				if (done === 'done') {
-					this.setBasket([])
+					this.setBasket([]);
 				}
 				this.isOrder = false;
 			},
@@ -98,7 +99,7 @@
 			cursor: pointer;
 			transition: 0.3s;
 
-				&:hover {
+			&:hover {
 				box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 				color: green;
 			}
@@ -124,9 +125,9 @@
 			grid-gap: 8px;
 			padding: 5px;
 
-      @media (max-width: 767.98px) {
-			display: none;
-		}
+			@media (max-width: 767.98px) {
+				display: none;
+			}
 		}
 	}
 	.basket-product {
@@ -140,9 +141,9 @@
 		background: #ffffff;
 		border: 1px solid #ebebeb;
 
-    @media (max-width: 575.98px) {
-			grid-template-columns:  1fr  ;
-      border-radius: 6px;
+		@media (max-width: 575.98px) {
+			grid-template-columns: 1fr;
+			border-radius: 6px;
 		}
 
 		&__img {
@@ -152,9 +153,9 @@
 			object-position: top;
 			border-radius: 4px;
 
- @media (max-width: 575.98px) {
-			height: 80vw;
-		}
+			@media (max-width: 575.98px) {
+				height: 80vw;
+			}
 		}
 
 		&__name {

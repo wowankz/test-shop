@@ -47,9 +47,9 @@
 			padding-left: calc((100% - 768px) / 2);
 		}
 
-    @media (max-width: 767.98px) {
+		@media (max-width: 767.98px) {
 			padding-right: 15px;
-			padding-left: 15px
+			padding-left: 15px;
 		}
 	}
 

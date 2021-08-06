@@ -8,6 +8,7 @@ export default new Vuex.Store({
     products: [],
     basket: [],
   },
+
   mutations: {
     setProducts(state, products) {
       state.products = products;
@@ -17,6 +18,7 @@ export default new Vuex.Store({
       state.basket = basket;
     },
   },
+
   actions: {
     async loadProducts({ commit }) {
       try {
@@ -60,7 +62,6 @@ export default new Vuex.Store({
   getters: {
     getProducts: (state) => state.products,
     getBasket: state => state.basket
-  },
+  }
 
-  modules: {},
 });
