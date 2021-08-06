@@ -1,6 +1,6 @@
 <template>
 	<header class="header center">
-		<img :src="getLogo()" alt="logo" class="logo" />
+		<img @click="goHome()" :src="getLogo()" alt="logo" class="logo" />
 		<div class="header-nav" :class="{ 'header-nav_open': isOpenMenu }">
 			<nav class="nav">
 				<router-link class="nav__link" to="/">Каталог</router-link>
@@ -42,6 +42,11 @@
 			goBasket() {
 				this.$router.push({ name: 'Basket' });
 			},
+
+			goHome() {
+				this.$router.push({ name: 'Catalog' });
+			},
+
 			getLogo() {
 				return require('@/assets/logo.png');
 			},
@@ -120,6 +125,7 @@
 	.logo {
 		width: 60px;
 		height: 40px;
+		cursor: pointer;
 	}
 	.nav {
 		display: flex;
